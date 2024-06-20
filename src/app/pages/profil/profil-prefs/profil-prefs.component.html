@@ -1,0 +1,58 @@
+<mat-card>
+  <div fxLayout="column">
+    <div fxLayout="column" fxFlex="100">
+      <form [formGroup]="form">
+        <div fxFlex="100" fxLayout="row" class="flex-p">
+          <div fxFlex="100" fxLayout="column">
+            <div fxFlex="100" fxLayout="row">
+              <div fxFlex="50" fxLayout="column">
+                <mat-form-field appearance="outline">
+                  <mat-label>{{ "prenom" | translate }}</mat-label>
+                  <input formControlName="firstName" matInput />
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>{{ "nom" | translate }}</mat-label>
+                  <input formControlName="lastName" matInput />
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>{{ "email" | translate }}</mat-label>
+                  <input formControlName="email" matInput />
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>{{ "telephone" | translate }}</mat-label>
+                  <input formControlName="telephone" matInput />
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>{{ "langue" | translate }}</mat-label>
+                  <mat-select
+                    placeholder="{{ 'langue' | translate }}"
+                    formControlName="locale"
+                  >
+                    <mat-option
+                      *ngFor="let element of langues"
+                      [value]="element.code"
+                    >
+                      {{ element.nom }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <div fxFlex="100" fxLayout="row">
+                  <div fxFlex="100" fxLayout="column">
+                    <button
+                      mat-raised-button
+                      color="primary"
+                      (click)="updatePref()"
+                      [disabled]="!form.valid"
+                    >
+                      {{ "btn.modifier" | translate }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</mat-card>

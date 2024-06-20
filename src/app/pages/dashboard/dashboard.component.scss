@@ -1,0 +1,71 @@
+.client{
+  font-size: 14px;
+}
+.projet{
+      font-size: 12px;
+      font-style: italic;
+      color: gray;
+}
+
+.mat-card-header {
+  text-align: left;
+  padding: 0 5px 0 5px !important;
+  font-weight: 400;
+  background-color: #446eb1;
+  color: #fff;
+  vertical-align: middle;
+  font-size: 14px;
+
+}
+
+.mat-card-header .mat-card-title {
+  padding: 0 5px 0 5px !important;
+  margin-right: 0px;
+  margin-left: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.mat-card {
+  padding: 0px;
+  border-radius: 4px;
+}
+
+.mat-card>.mat-card-actions:last-child {
+  margin-bottom: 5px;
+  margin-right: 5px;
+  padding-bottom: 0;
+}
+
+.amcharts-Sprite-group .amcharts-Container-group {
+  margin: 0;
+  height: 5px;
+  background-color: aqua !important;
+}
+
+.amcharts-Sprite-group .amcharts-Container-group .amcharts-Label-group {
+  color: red;
+}
+
+.mat-header-cell {
+  font-size: 12px;
+
+}
+
+tr.mat-header-row,
+tr.mat-footer-row,
+tr.mat-row {
+  height: 27px !important;
+}
+
+.eye_icon{
+  font-size: 15px;
+  vertical-align: middle;
+  width: 24px !important;
+  height: 18px !important;
+}
+.mat-icon:hover{
+  cursor: pointer;
+}

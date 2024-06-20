@@ -1,0 +1,32 @@
+<div
+  class="mat-dialog-title"
+  style="margin-bottom: 10px"
+  fxLayoutAlign="space-between center"
+>
+  <mat-label>{{ title | translate }}</mat-label>
+  <button class="close" mat-button (click)="closeDialog()">X</button>
+</div>
+<div>
+  <div fxFlex="100" fxLayout="column" class="flex-p">
+    <form [formGroup]="form" fxLayout="column" fxFlex="100">
+      <div fxFlex="100" fxLayout="row">
+        <div fxFlex="100" fxLayout="column" class="no-error">
+          <mat-form-field appearance="outline">
+            <mat-label>{{ "nom" | translate }}</mat-label>
+            <input formControlName="nom" matInput />
+          </mat-form-field>
+        </div>
+      </div>
+      <div fxFlex="100" fxLayout="row">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="save()"
+          [disabled]="!form.valid"
+        >
+          {{ "btn.enregistrer" | translate }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

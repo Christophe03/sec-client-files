@@ -1,0 +1,11 @@
+npm install --save file-saver
+
+#translate library
+npm install --save @ngx-translate/core
+npm install @ngx-translate/http-loader --save
+
+#NgIdleKeepaliveModule
+npm install --save @ng-idle/core @ng-idle/keepalive angular2-moment
+
+#spinner
+npm install ngx-spinner --save

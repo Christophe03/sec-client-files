@@ -1,0 +1,220 @@
+<!-- eslint-disable -->
+<div class="mat-elevation-z2" fxLayout="column" class="py-b">
+  <div
+    *ngIf="action === 'list'"
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+  >
+    <div fxLayout="column" fxFlex="100">
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxLayout="column" fxFlex="100">
+          <mat-card fxLayout="row">
+            <div fxLayout="row" fxFlex="5" fxLayoutAlign="start center">
+              <button
+                *ngIf="viewType === 'list'"
+                (click)="toggleViewType('grid')"
+                mat-icon-button
+                color="primary"
+                matTooltip="{{ 'view.liste' | translate }}"
+              >
+                <mat-icon>view_module</mat-icon>
+              </button>
+              <button
+                *ngIf="viewType === 'grid'"
+                (click)="toggleViewType('list')"
+                mat-icon-button
+                color="primary"
+                matTooltip="{{ 'view.grille' | translate }}"
+              >
+                <mat-icon>view_list</mat-icon>
+              </button>
+            </div>
+            <div fxLayout="row" fxFlex="83" fxLayoutAlign="start center">
+              <div class="list-search">
+                <div fxLayout="column">
+                  <mat-form-field appearance="outline">
+                    <input
+                      matInput
+                      placeholder="{{ 'recherche...' | translate }}"
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div
+              fxLayout="row"
+              class="p-rl-10"
+              fxFlex="12"
+              fxLayoutAlign="end center"
+            >
+              <button (click)="add()" mat-flat-button color="primary">
+                <mat-icon>add_circle</mat-icon>
+                {{ "btn.nouveau" | translate }}
+              </button>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+      <div fxLayout="column">
+        <div class="prefix-css" *ngIf="viewType === 'list'">
+          <div class="prefix-css">
+            <ngx-datatable
+              class="material striped"
+              [headerHeight]="25"
+              [columnMode]="ColumnMode.force"
+              [footerHeight]="35"
+              [rowHeight]="'auto'"
+              [rows]="rows"
+              [limit]="nbligne"
+            >
+              <ngx-datatable-column prop="name">
+                <ng-template ngx-datatable-header-template sho>
+                  <span>{{ "nom" | translate }}</span>
+                </ng-template>
+                <ng-template
+                  ngx-datatable-cell-template
+                  let-value="value"
+                  let-row="row"
+                >
+                  <div (click)="edit(row)">
+                    {{ value | translate }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column
+                prop="email"
+                [width]="200"
+                [canAutoResize]="false"
+              >
+                <ng-template ngx-datatable-header-template sho>
+                  <span>{{ "email" | translate }}</span>
+                </ng-template>
+                <ng-template
+                  ngx-datatable-cell-template
+                  let-value="value"
+                  let-row="row"
+                >
+                  <div (click)="edit(row)">
+                    {{ value | translate }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column
+                prop="telephone"
+                [width]="150"
+                [canAutoResize]="false"
+              >
+                <ng-template ngx-datatable-header-template sho>
+                  <span>{{ "telephone" | translate }}</span>
+                </ng-template>
+                <ng-template
+                  ngx-datatable-cell-template
+                  let-value="value"
+                  let-row="row"
+                >
+                  <div (click)="edit(row)">
+                    {{ value | translate }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column
+                [width]="60"
+                [canAutoResize]="false"
+                [sortable]="false"
+              >
+                <ng-template ngx-datatable-header-template>
+                  <span></span>
+                </ng-template>
+                <ng-template
+                  ngx-datatable-cell-template
+                  let-value="value"
+                  let-row="row"
+                >
+                  <div
+                    fxLayout="row"
+                    fxLayoutAlign="end center"
+                    style="padding-top: 5px"
+                  >
+                    <mat-icon
+                      class="iconSize"
+                      (click)="edit(row)"
+                      color="primary"
+                    >
+                      edit_circle
+                    </mat-icon>
+                    <mat-icon
+                      *ngIf="row.nature !== 'S'"
+                      class="iconSize"
+                      (click)="del(row)"
+                      color="warn"
+                    >
+                      delete
+                    </mat-icon>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+
+        <div fxLayout="row wrap" *ngIf="viewType === 'grid'">
+          <div
+            *ngFor="
+              let user of rows
+                | paginate : { itemsPerPage: 8, currentPage: page }
+            "
+            fxFlex="100"
+            fxFlex.gt-md="25"
+            fxFlex.md="50"
+            class="flex-p"
+          >
+            <div
+              (click)="edit(user)"
+              fxLayout="column"
+              class="flex-p"
+              fxLayoutAlign="center center"
+            >
+              <div
+                fxFlex="20"
+                class="user-block"
+                xLayoutAlign="space-between center"
+              >
+                <img
+                  src="assets/img/users/default-user.jpg"
+                  class="transition-2"
+                  [class.blocked]="user.etat"
+                />
+              </div>
+              <p
+                fxLayout="row"
+                class="user-name text-primary"
+                fxLayoutAlign="center center"
+              >
+                <span>{{ user.name }}</span>
+              </p>
+
+              <span class="user-email">{{ user.email }}</span>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="rows" fxLayout="row wrap" class="flex-py">
+          <div fxFlex="100">
+            <mat-card class="p-0 text-center">
+              <pagination-controls
+                class="gradus-pagination"
+                autoHide="true"
+                maxSize="3"
+                (pageChange)="onPageChanged($event)"
+              >
+              </pagination-controls>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="action === 'edit'">
+    <app-users-edit (action)="cancel($event)" [item]="item"> </app-users-edit>
+  </div>
+</div>

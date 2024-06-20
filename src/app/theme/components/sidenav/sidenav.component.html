@@ -1,0 +1,45 @@
+<div fxLayout="row" class="app-info">
+  <div class="" fxLayout="column">
+    <div class="flexrh">Flex RH</div>
+    <p class="flexrh-module">Paramétrage</p>
+  </div>
+</div>
+<div
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  class="user-block transition-2"
+  [class.show]="settings.sidenavUserBlock"
+>
+  <div
+    [fxLayout]="settings.menuType !== 'default' ? 'column' : 'row'"
+    [fxLayoutAlign]="
+      settings.menuType !== 'default' ? 'center center' : 'start center'
+    "
+    class="user-info-wrapper"
+  >
+    <img [src]="userImage" alt="user-image" width="250" height="50" />
+  </div>
+  <!-- <div *ngIf="settings.menuType != 'mini'" fxLayout="row" fxLayoutAlign="space-around center"
+        class="w-100 muted-text">
+        <button mat-icon-button routerLink="/profile/user-info">
+            <mat-icon>person_outline</mat-icon>
+        </button>
+        <a mat-icon-button routerLink="/profile/mailbox">
+            <mat-icon>mail_outline</mat-icon>
+        </a>
+        <a mat-icon-button routerLink="/profile/schedule">
+            <mat-icon>event</mat-icon>
+        </a>
+        <a mat-icon-button (click)="onLogout()">
+            <mat-icon>power_settings_new</mat-icon>
+        </a>
+    </div> -->
+</div>
+
+<!-- <perfect-scrollbar class="sidenav-menu-outer" [class.user-block-show]="settings.sidenavUserBlock"> -->
+<ng-scrollbar>
+  <div id="vertical-menu">
+    <app-vertical-menu [menuParentId]="0"></app-vertical-menu>
+  </div>
+</ng-scrollbar>
+<!-- </perfect-scrollbar> -->

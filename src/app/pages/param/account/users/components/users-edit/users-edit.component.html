@@ -1,0 +1,90 @@
+<div>
+  <form
+    [formGroup]="form"
+    class="mat-elevation-z2"
+    fxLayout="column"
+    fxFlex="100"
+  >
+    <mat-tab-group (selectedTabChange)="onTabChange($event)">
+      <mat-tab label="{{ 'description' | translate }}" class="flex-p">
+        <div fxFlex="100" fxLayout="row" class="flex-p">
+          <div fxFlex="48" fxLayout="column" class="no-error">
+            <div fxFlex="100" fxLayout="row">
+              <div fxFlex="26" fxLayout="column">
+                <mat-form-field appearance="outline">
+                  <mat-label>{{ "login" | translate }}</mat-label>
+                  <input formControlName="login" matInput />
+                </mat-form-field>
+              </div>
+              <div fxFlex="2" fxLayout="column"></div>
+              <div fxFlex="40" fxLayout="column">
+                <mat-form-field appearance="outline">
+                  <mat-label>{{ "prenom" | translate }}</mat-label>
+                  <input formControlName="firstName" matInput />
+                </mat-form-field>
+              </div>
+              <div fxFlex="2" fxLayout="column"></div>
+              <div fxFlex="30" fxLayout="column">
+                <mat-form-field appearance="outline">
+                  <mat-label>{{ "nom" | translate }}</mat-label>
+                  <input formControlName="lastName" matInput />
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div fxFlex="100" fxLayout="row">
+              <div fxFlex="68" fxLayout="column">
+                <mat-form-field appearance="outline">
+                  <mat-label>{{ "email" | translate }}</mat-label>
+                  <input formControlName="email" matInput />
+                </mat-form-field>
+              </div>
+              <div fxFlex="2" fxLayout="column"></div>
+              <div fxFlex="30" fxLayout="column">
+                <mat-form-field appearance="outline">
+                  <mat-label>{{ "telephone" | translate }}</mat-label>
+                  <input formControlName="telephone" matInput />
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div fxFlex="4" fxLayout="column" class="no-error"></div>
+          <div fxFlex="48" fxLayout="column" class="no-error"></div>
+        </div>
+      </mat-tab>
+      <mat-tab
+        label="{{ 'permissions.sur.les.fonctionalites' | translate }}"
+        class="flex-p"
+      >
+        <app-users-access [user]="item"></app-users-access>
+      </mat-tab>
+      <mat-tab
+        label="{{ 'permissions.sur.les.dossiers' | translate }}"
+        class="flex-p"
+      >
+        <app-users-dos [user]="item"></app-users-dos>
+      </mat-tab>
+    </mat-tab-group>
+    <div fxFlex="100" fxLayout="row" class="mat-tab-action" class="flex-p">
+      <button
+        *ngIf="index === 0"
+        mat-raised-button
+        color="primary"
+        (click)="update()"
+        [disabled]="!form.valid"
+        style="margin-right: 10px"
+      >
+        {{ "btn.modifier" | translate }}
+      </button>
+      <button
+        *ngIf="index === 0"
+        mat-raised-button
+        color="warn"
+        (click)="cancel()"
+        style="margin-right: 10px"
+      >
+        {{ "btn.annuler" | translate }}
+      </button>
+    </div>
+  </form>
+</div>

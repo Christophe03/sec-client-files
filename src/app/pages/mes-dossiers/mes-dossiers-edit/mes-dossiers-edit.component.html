@@ -1,0 +1,27 @@
+@if (item !== null) {
+<div fxLayout="row wrap">
+  <div fxFlex="100" class="flex-p">
+    <mat-card fxLayout="row">
+      <div fxFlex="100" fxLayout="column">
+        <mat-label class="page-title"
+          >{{ item.raisonSocial }} ({{ item.sigle }})
+        </mat-label>
+      </div></mat-card
+    >
+  </div>
+</div>
+
+<div fxLayout="row wrap">
+  <div fxFlex="100" class="flex-p">
+    <mat-card fxLayout="column">
+      <!-- <mat-tab-group> -->
+      <!-- <mat-tab label="{{ 'Répertoire' | translate }}"> -->
+      <!-- <app-societes-edit></app-societes-edit> -->
+      <app-societe-repertoire [item]="item"></app-societe-repertoire>
+      <!-- </mat-tab> -->
+
+      <!-- </mat-tab-group> -->
+    </mat-card>
+  </div>
+</div>
+}

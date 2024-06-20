@@ -1,0 +1,81 @@
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="medium"
+  color="#fff"
+  type="square-jelly-box"
+  [fullScreen]="true"
+  ><p style="color: white">{{ "wait.please" | translate }}</p></ngx-spinner
+>
+<mat-sidenav-container>
+  <div fxLayout="row" fxLayoutAlign="center center" class="h-100">
+    <form [formGroup]="form" fxFlex="80" fxFlex.gt-sm="30" fxFlex.sm="60">
+      <mat-card class="p-0 mat-elevation-z24 box">
+        <div
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          class="bg-primary box-header-login"
+        >
+          <!-- <button mat-fab color="accent" class="mat-elevation-z12" (click)="onSubmit(form.value);">
+                          <mat-icon>exit_to_app</mat-icon>
+                      </button> -->
+          <img src="../assets/img/users/str.png" alt="user-image" />
+        </div>
+        <mat-card-content
+          fxLayout="column"
+          fxLayoutAlign="end center"
+          class="box-content"
+        >
+          <mat-card
+            fxLayout="column"
+            fxLayoutAlign="center center"
+            class="mat-elevation-z12 box-content-inner"
+          >
+            <span class="box-content-header">{{
+              "se.connecter" | translate
+            }}</span>
+            <mat-form-field class="w-100">
+              <input matInput placeholder="Login" formControlName="login" />
+              <mat-icon matSuffix>account_box</mat-icon>
+              <mat-error *ngIf="form.controls['login'].errors?.['required']">{{
+                "login.obligatoire" | translate
+              }}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="w-100">
+              <input
+                matInput
+                [type]="hide ? 'password' : 'text'"
+                placeholder="Password"
+                formControlName="password"
+              />
+              <mat-icon matSuffix (click)="hide = !hide"
+                >{{ hide ? "visibility_off" : "visibility" }}
+              </mat-icon>
+
+              <mat-error
+                *ngIf="form.controls['password'].errors?.['required']"
+                >{{ "password.obligatoire" | translate }}</mat-error
+              >
+            </mat-form-field>
+            <small (click)="newPassword()">
+              {{ "Mot de passe oublié" | translate }}</small
+            >
+          </mat-card>
+          <!-- <div class="link">
+                          <a mat-button routerLink="/register">Vous avez pas encore de compte? Créer un compte
+                              maitenant!</a>
+                      </div> -->
+
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="login()"
+            class="mat-elevation-z12 box-button"
+          >
+            {{ "connexion" | translate }}
+          </button>
+        </mat-card-content>
+      </mat-card>
+    </form>
+  </div>
+</mat-sidenav-container>

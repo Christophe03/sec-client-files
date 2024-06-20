@@ -1,0 +1,28 @@
+{
+  "organismes_de_formation": [
+    {
+      "nom": "AeroFormation Paris",
+      "type_formation": "Pilote Commercial",
+      "date_d_agrément": "15/06/2023",
+      "statut": "Actif"
+    },
+    {
+      "nom": "SkyTech Training Academy",
+      "type_formation": "Maintenance d'Aéronefs",
+      "date_d_agrément": "20/06/2023",
+      "statut": "Actif"
+    },
+    {
+      "nom": "Global Flight School",
+      "type_formation": "Contrôle Aérien",
+      "date_d_agrément": "25/06/2023",
+      "statut": "Suspendu"
+    },
+    {
+      "nom": "Wings Aviation Institute",
+      "type_formation": "Formation Initiale Pilote",
+      "date_d_agrément": "01/07/2023",
+      "statut": "Actif"
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+<div
+  class="mat-dialog-title"
+  style="margin-bottom: 10px"
+  fxLayoutAlign="space-between center"
+>
+  <mat-label>{{ "Nouvelle société" | translate }}</mat-label>
+  <button class="close" mat-button (click)="closeDialog()">X</button>
+</div>
+
+<div>
+  <div fxFlex="100" fxLayout="column" class="flex-p">
+    <form [formGroup]="form" fxLayout="column" fxFlex="100">
+      <div fxFlex="100" fxLayout="row">
+        <div fxFlex="100" fxLayout="column" class="no-error">
+          <!-- Ligne 1 -->
+          <div fxFlex="100" fxLayout="row">
+            <!-- Sigle -->
+            <div fxFlex="26" fxLayout="column">
+              <mat-form-field appearance="outline">
+                <mat-label>{{ "Sigle" | translate }}</mat-label>
+                <input
+                  placeholder="{{ 'Sigle' | translate }}"
+                  formControlName="sigle"
+                  matInput
+                />
+              </mat-form-field>
+            </div>
+            <!-- Un peu d'espace ne fait jamais de mal ; ) -->
+            <div fxFlex="2" fxLayout="column"></div>
+            <!-- Nif -->
+            <div fxFlex="26" fxLayout="column">
+              <mat-form-field appearance="outline">
+                <mat-label>{{
+                  "Numéro d'identification fiscal" | translate
+                }}</mat-label>
+                <input
+                  placeholder="{{ 'NIF' | translate }}"
+                  formControlName="nif"
+                  matInput
+                />
+              </mat-form-field>
+            </div>
+            <!-- Un peu d'espace ne fait jamais de mal ; ) -->
+            <div fxFlex="2" fxLayout="column"></div>
+            <!-- Raison social -->
+            <div fxFlex="44" fxLayout="column">
+              <mat-form-field appearance="outline">
+                <mat-label>{{ "Raison social" | translate }}</mat-label>
+                <input
+                  placeholder="{{ 'Raison social' | translate }}"
+                  formControlName="raisonSocial"
+                  matInput
+                />
+              </mat-form-field>
+            </div>
+          </div>
+          <!-- Ligne 2 -->
+          <div fxFlex="100" fxLayout="row">
+            <!-- Rccm -->
+            <div fxFlex="17" fxLayout="column">
+              <mat-form-field appearance="outline">
+                <mat-label>{{ "RCCM" | translate }}</mat-label>
+                <input
+                  placeholder="{{ 'RCCM' | translate }}"
+                  formControlName="rccm"
+                  matInput
+                />
+              </mat-form-field>
+            </div>
+            <!-- Un peu d'espace ne fait jamais de mal ; ) -->
+            <div fxFlex="2" fxLayout="column"></div>
+            <!-- BP -->
+            <div fxFlex="17" fxLayout="column">
+              <mat-form-field appearance="outline">
+                <mat-label>{{ "Boite postal" | translate }}</mat-label>
+                <input
+                  placeholder="{{ 'Boite postal' | translate }}"
+                  formControlName="bp"
+                  matInput
+                />
+              </mat-form-field>
+            </div>
+            <!-- Un peu d'espace ne fait jamais de mal ; ) -->
+            <div fxFlex="2" fxLayout="column"></div>
+            <!-- Téléphone -->
+            <div fxFlex="23" fxLayout="column">
+              <mat-form-field appearance="outline">
+                <mat-label>{{ "Téléphone" | translate }}</mat-label>
+                <input
+                  placeholder="{{ 'Téléphone' | translate }}"
+                  formControlName="telephone"
+                  matInput
+                />
+              </mat-form-field>
+            </div>
+            <!-- Un peu d'espace ne fait jamais de mal ; ) -->
+            <div fxFlex="2" fxLayout="column"></div>
+            <!-- Email -->
+            <div fxFlex="37" fxLayout="column">
+              <mat-form-field appearance="outline">
+                <mat-label>{{ "Email" | translate }}</mat-label>
+                <input
+                  placeholder="{{ 'Email' | translate }}"
+                  formControlName="email"
+                  matInput
+                />
+              </mat-form-field>
+            </div>
+          </div>
+          <!-- Ligne 3 -->
+          <div fxFlex="100" fxLayout="row">
+            <!-- Adresse -->
+            <div fxFlex="32" fxLayout="column">
+              <mat-form-field appearance="outline">
+                <mat-label>{{ "Adresse" | translate }}</mat-label>
+                <input
+                  placeholder="{{ 'Adresse' | translate }}"
+                  formControlName="adresse"
+                  matInput
+                />
+              </mat-form-field>
+            </div>
+            <!-- Un peu d'espace ne fait jamais de mal ; ) -->
+            <div fxFlex="2" fxLayout="column"></div>
+            <!-- Responsable -->
+            <div fxFlex="32" fxLayout="column">
+              <mat-form-field appearance="outline">
+                <mat-label>{{ "Responsable" | translate }}</mat-label>
+                <input
+                  placeholder="{{ 'Responsable' | translate }}"
+                  formControlName="responsable"
+                  matInput
+                />
+              </mat-form-field>
+            </div>
+            <!-- Un peu d'espace ne fait jamais de mal ; ) -->
+            <div fxFlex="2" fxLayout="column"></div>
+            <!-- Architecture -->
+            <div fxFlex="32" fxLayout="column">
+              <mat-form-field appearance="outline">
+                <mat-label>{{ "Architecture Dossier" | translate }}</mat-label>
+                <mat-select
+                  placeholder="{{ 'Architecture dossier' | translate }}"
+                  formControlName="selectArchi"
+                >
+                  <mat-option
+                    *ngFor="let element of archiList"
+                    [value]="element"
+                  >
+                    {{ element }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div fxFlex="100" fxLayout="row">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="save()"
+          [disabled]="!form.valid"
+        >
+          {{ "Enregister" | translate }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

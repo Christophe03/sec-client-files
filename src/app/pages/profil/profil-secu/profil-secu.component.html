@@ -1,0 +1,96 @@
+<mat-card>
+  <div fxLayout="column" fxFlex="100">
+    <div fxFlex="100" fxLayout="row" class="flex-p">
+      <div fxFlex="50" fxLayout="column">
+        <button mat-raised-button color="primary" (click)="updatePassword()">
+          {{ "modifier.mot.de.passe" | translate }}
+        </button>
+      </div>
+    </div>
+    <!-- <form [formGroup]="form" class="no-error">
+      <div fxFlex="100" fxLayout="row" class="flex-p">
+        <div fxFlex="100" fxLayout="column">
+          <div fxFlex="100" fxLayout="row">
+            <div fxFlex="25" fxLayout="column">
+              <mat-form-field appearance="outline">
+                <mat-label>{{ "ancien.mot.de.passe" | translate }}</mat-label>
+                <input
+                  type="password"
+                  matInput
+                  maxlength="250"
+                  formControlName="apwd"
+                />
+                <mat-icon matSuffix>vpn_key</mat-icon>
+                <mat-error
+                  *ngIf="
+                    form.controls['apwd'].dirty &&
+                    !form.controls['apwd'].valid &&
+                    form.controls['apwd'].errors['required']
+                  "
+                >
+                  ancien mot de passe est obligatoire
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>{{ "nouveau.mot.de.passe" | translate }}</mat-label>
+                <input
+                  type="password"
+                  matInput
+                  maxlength="250"
+                  formControlName="npwd"
+                />
+                <mat-icon matSuffix>vpn_key</mat-icon>
+                <mat-error
+                  *ngIf="
+                    form.controls['npwd'].dirty &&
+                    !form.controls['npwd'].valid &&
+                    form.controls['npwd'].errors['required']
+                  "
+                >
+                  {{ "new.password.obligatoire" | translate }}
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>{{
+                  "confirmer.mot.de.passe" | translate
+                }}</mat-label>
+                <input
+                  type="password"
+                  matInput
+                  maxlength="250"
+                  formControlName="cpwd"
+                />
+                <mat-icon matSuffix>vpn_key</mat-icon>
+                <mat-error
+                  *ngIf="
+                    form.controls['cpwd'].dirty &&
+                    !form.controls['cpwd'].valid &&
+                    form.controls['cpwd'].errors['required']
+                  "
+                >
+                  {{ "confirmation.obligatoire" | translate }}
+                </mat-error>
+                <mat-error *ngIf="form.controls.cpwd.errors?.MatchPassword">
+                  {{ "password.incorrrect" | translate }}
+                </mat-error>
+              </mat-form-field>
+
+              <div fxFlex="100" fxLayout="row">
+                <div fxFlex="100" fxLayout="column">
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    (click)="initPwd()"
+                    [disabled]="!form.valid"
+                  >
+                    {{ "modifier.mot.de.passe" | translate }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form> -->
+  </div>
+</mat-card>

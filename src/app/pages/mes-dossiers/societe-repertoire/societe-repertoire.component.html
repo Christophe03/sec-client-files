@@ -1,0 +1,330 @@
+<div class="flex-p" fxLayout="column">
+  <div style="padding-bottom: 10px"></div>
+  <div fxLayout="row" fxFlex="100">
+    <div fxLayout="column" fxFlex="100">
+      <div fxLayout="row" fxFlex="100">
+        <div fxLayout="row" fxFlex="6" fxLayoutAlign="start start">
+          <button
+            class="btn-fl-width"
+            (click)="noveauDossier()"
+            mat-flat-button
+            color="primary"
+            matTooltip="Ajouter un nouveau dossier"
+          >
+            <mat-icon> create_new_folder</mat-icon>
+          </button>
+        </div>
+        <div fxLayout="row" fxFlex="1"></div>
+        @if (repertoireList.length > 2 && !actualRepertoire.public) {
+        <div fxLayout="row" fxFlex="6" fxLayoutAlign="start start">
+          <button
+            class="btn-fl-width"
+            (click)="deposer()"
+            mat-flat-button
+            color="primary"
+            matTooltip="Déposer des documents"
+          >
+            <mat-icon>upload_file</mat-icon>
+          </button>
+        </div>
+        <div fxLayout="row" fxFlex="1"></div>
+        }
+
+        <div
+          fxLayout="row"
+          [fxFlex]="
+            repertoireList.length > 2 && !actualRepertoire.public ? 86 : 93
+          "
+          fxLayoutAlign="start center"
+        >
+          <div class="list-search">
+            <div fxLayout="column">
+              <mat-form-field appearance="outline">
+                <input
+                  [(ngModel)]="searchZone"
+                  (keyup)="filter($event)"
+                  matInput
+                  placeholder="{{ 'recherche...' | translate }}"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="padding-bottom: 20px"></div>
+  <div fxLayout="row" class="arborescence">
+    <!-- Pour le header, la zone  qui vas nous situer dans l'arborescence dans le répertoire-->
+    @if (scroolActive) {
+    <div fxLayout="column" fxFlex="5" fxLayoutAlign="center center">
+      <button
+        (click)="scrollLeft()"
+        mat-icon-button
+        color="primary"
+        matTooltip="{{ 'precedent' | translate }}"
+      >
+        <mat-icon>arrow_back_ios</mat-icon>
+      </button>
+    </div>
+    }
+
+    <div fxLayout="column" [fxFlex]="scroolActive ? 90 : 100">
+      <div fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
+        <div #widgetsContent class="middle breadcrumb">
+          @for (item of repertoireList; track item.lienDos; let idx = $index) {
+          <!-- @if (idx > 0) {
+          <div class="separateur">/</div>
+          } -->
+
+          @if (item.lienFiles !== actualRepertoire.lienFiles) {
+          <div
+            (click)="gotoRep(idx)"
+            class="info-widget breadcrumb-item rep-not-in"
+          >
+            {{ item.libelle }}
+          </div>
+          } @else {
+          <div class="info-widget breadcrumb-item rep-in">
+            {{ item.libelle }}
+          </div>
+          } }
+        </div>
+      </div>
+    </div>
+    @if (scroolActive) {
+    <div fxLayout="column" fxFlex="5" fxLayoutAlign="center center">
+      <button
+        (click)="scrollRight()"
+        mat-icon-button
+        color="primary"
+        matTooltip="{{ 'precedent' | translate }}"
+      >
+        <mat-icon>arrow_forward_ios</mat-icon>
+      </button>
+    </div>
+    }
+  </div>
+
+  <div style="padding-bottom: 10px"></div>
+  <!-- <div fxLayout="row" style="border: 1px solid blue"> -->
+  <!-- <div fxLayout="column" class="flex-p"> -->
+  <div fxLayout="column" class="">
+    <div class="prefix-css">
+      <ngx-datatable
+        class="material striped"
+        [headerHeight]="25"
+        [columnMode]="ColumnMode.force"
+        [footerHeight]="35"
+        [rowHeight]="'auto'"
+        [rows]="rows"
+        [limit]="nbligne"
+        [loadingIndicator]="loading"
+        [messages]="{ emptyMessage: 'Ce dossier ne contient aucun element' }"
+      >
+        <!-- Pour les icones (dossier ou extension du fichier en question) -->
+        <ngx-datatable-column
+          [sortable]="false"
+          [width]="70"
+          [canAutoResize]="false"
+        >
+          <ng-template ngx-datatable-header-template let-sort="sortFn">
+            <span></span>
+          </ng-template>
+          <ng-template
+            ngx-datatable-cell-template
+            let-value="value"
+            let-row="row"
+          >
+            @if (row.type === 'd') {
+            <div>
+              <img
+                src="assets/img/files/dossier-vide_1.png"
+                alt="{{ value }}"
+              />
+              <img
+                src="assets/img/files/cadenas_2.png"
+                alt="{{ value }}"
+                *ngIf="row.public"
+              />
+            </div>
+
+            }
+            <div>
+              <img
+                src="assets/img/files/pdf.png"
+                alt="{{ value }}"
+                *ngIf="row.extension === 'pdf'"
+              />
+              <img
+                src="assets/img/files/excel.png"
+                alt="{{ value }}"
+                *ngIf="row.extension === 'xls'"
+              />
+              <img
+                src="assets/img/files/excel.png"
+                alt="{{ value }}"
+                *ngIf="row.extension === 'xlsx'"
+              />
+              <img
+                src="assets/img/files/word.png"
+                alt="{{ value }}"
+                *ngIf="row.extension === 'doc'"
+              />
+              <img
+                src="assets/img/files/word.png"
+                alt="{{ value }}"
+                *ngIf="row.extension === 'docx'"
+              />
+              <img
+                src="assets/img/files/power_point.png"
+                alt="{{ value }}"
+                *ngIf="row.extension === 'ppt'"
+              />
+              <img
+                src="assets/img/files/power_point.png"
+                alt="{{ value }}"
+                *ngIf="row.extension === 'pptx'"
+              />
+              <img
+                src="assets/img/files/jpeg.png"
+                alt="{{ value }}"
+                *ngIf="row.extension === 'jpeg'"
+              />
+              <img
+                src="assets/img/files/png.png"
+                alt="{{ value }}"
+                *ngIf="row.extension === 'png'"
+              />
+              <img
+                src="assets/img/files/jpg.png"
+                alt="{{ value }}"
+                *ngIf="row.extension === 'jpg'"
+              />
+              <img
+                src="assets/img/files/excel.png"
+                alt="{{ value }}"
+                *ngIf="row.extension === 'cvs'"
+              />
+              <img
+                src="assets/img/files/html.png"
+                alt="{{ value }}"
+                *ngIf="row.extension === 'html'"
+              />
+              <img
+                src="assets/img/files/xml.png"
+                alt="{{ value }}"
+                *ngIf="row.extension === 'xml'"
+              />
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+
+        <!-- le nom  -->
+        <ngx-datatable-column prop="libelle">
+          <ng-template ngx-datatable-header-template let-sort="sortFn">
+            <span>Nom</span>
+          </ng-template>
+          <ng-template
+            ngx-datatable-cell-template
+            let-value="value"
+            let-row="row"
+          >
+            <div (click)="edit(row)">
+              {{ value }}
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+        <!-- Extension -->
+        <ngx-datatable-column
+          [sortable]="false"
+          [width]="100"
+          [canAutoResize]="false"
+          prop="extension"
+        >
+          <ng-template ngx-datatable-header-template let-sort="sortFn">
+            <span>Extension</span>
+          </ng-template>
+          <ng-template
+            ngx-datatable-cell-template
+            let-value="value"
+            let-row="row"
+          >
+            <div (click)="edit(row)">
+              {{ value }}
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+        <!-- Taille -->
+        <ngx-datatable-column
+          [sortable]="false"
+          [width]="100"
+          [canAutoResize]="false"
+          prop="taille"
+        >
+          <ng-template ngx-datatable-header-template let-sort="sortFn">
+            <span>Taille</span>
+          </ng-template>
+          <ng-template
+            ngx-datatable-cell-template
+            let-value="value"
+            let-row="row"
+          >
+            <div (click)="edit(row)">
+              {{ value }}
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+        <!-- Date création -->
+        <ngx-datatable-column
+          [sortable]="false"
+          [width]="150"
+          [canAutoResize]="false"
+          prop="dateCreation"
+        >
+          <ng-template ngx-datatable-header-template let-sort="sortFn">
+            <span>Date de création</span>
+          </ng-template>
+          <ng-template
+            ngx-datatable-cell-template
+            let-value="value"
+            let-row="row"
+          >
+            <div (click)="edit(row)">
+              {{ +value | millisecondeToDate | date : "dd-MM-yyyy HH:mm" }}
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+        <!-- Crée par -->
+        <ngx-datatable-column
+          [sortable]="false"
+          [width]="200"
+          [canAutoResize]="false"
+          prop="createur"
+        >
+          <ng-template ngx-datatable-header-template let-sort="sortFn">
+            <span>Créé par</span>
+          </ng-template>
+          <ng-template
+            ngx-datatable-cell-template
+            let-value="value"
+            let-row="row"
+          >
+            @if(value === 'admin'){
+            <div (click)="edit(row)">
+              {{ value }}
+            </div>
+            } @else {
+            <div (click)="edit(row)">
+              <div *ngIf="value | jsonParse as user">
+                <p>{{ user.name }}</p>
+              </div>
+            </div>
+            }
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+    </div>
+    <!-- </div> -->
+  </div>
+</div>

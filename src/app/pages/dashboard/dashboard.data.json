@@ -1,0 +1,37 @@
+{
+  "tableau_de_bord": {
+    "demandes_licences": {
+      "periode": "Janvier 2023 - Juin 2023",
+      "demandes": {
+        "en_attente_de_revision": 20,
+        "en_cours_de_traitement": 30,
+        "completes": 50,
+        "rejetees": 5
+      }
+    },
+    "detenteurs_licences": {
+      "total_actives": 200,
+      "expirées": 20,
+      "suspendues": 5,
+      "révoquées": 2
+    },
+    "formations_personnel_pel": {
+      "completes": "85%",
+      "en_cours": "10%",
+      "planifiees": "5%"
+    },
+    "organismes_formation": {
+      "total_agrees": 15,
+      "statuts": {
+        "actif": 12,
+        "suspendu": 1,
+        "inactif": 2
+      }
+    },
+    "verification_licences": {
+      "licences_verifiees_hier": 100,
+      "licences_validees": 95,
+      "licences_invalides": 5
+    }
+  }
+}

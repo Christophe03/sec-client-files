@@ -1,0 +1,27 @@
+{
+  "demandes_de_licences": {
+    "periode": "Janvier 2023 - Juin 2023",
+    "demandes": [
+      {
+        "numéro_demande": "2023-001",
+        "type_licence": "Pilote Commercial",
+        "statut": "En Attente de Révision"
+      },
+      {
+        "numéro_demande": "2023-002",
+        "type_licence": "Contrôleur Aérien",
+        "statut": "En Cours de Traitement"
+      },
+      {
+        "numéro_demande": "2023-003",
+        "type_licence": "Mécanicien d'Aéronef",
+        "statut": "Complète"
+      },
+      {
+        "numéro_demande": "2023-004",
+        "type_licence": "Instructeur de Vol",
+        "statut": "Rejetée"
+      }
+    ]
+  }
+}

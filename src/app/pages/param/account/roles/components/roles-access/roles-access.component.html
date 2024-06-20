@@ -1,0 +1,115 @@
+<!-- eslint-disable -->
+<mat-sidenav-container class="my-container" autosize>
+  <mat-sidenav #sidenav class="my-sidenav" mode="side" opened="true">
+    <mat-toolbar
+      color="primary"
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+    >
+      <small class="titre">{{ "modules" | translate }}</small>
+      <button mat-icon-button (click)="addModule()">
+        <mat-icon style="font-size: 12px">add_circle</mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-nav-list>
+      <div *ngFor="let m of modules">
+        <mat-list-item>
+          <div
+            fxFlex="100"
+            fxLayout="row"
+            fxLayoutAlign="space-between space-between"
+            class="subject"
+          >
+            <div
+              (click)="show(m)"
+              fxFlex="95"
+              fxLayout="column"
+              fxLayoutAlign="center start"
+            >
+              <small>{{ m.module.nom }}</small>
+            </div>
+            <div
+              fxFlex="5"
+              fxLayout="column"
+              fxLayoutAlign="end center"
+              class="no-error"
+            >
+              <div fxFlex="100" fxLayout="row">
+                <mat-icon class="iconSize" (click)="delModule(m)" color="warn"
+                  >delete
+                </mat-icon>
+              </div>
+            </div>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </div>
+    </mat-nav-list>
+    <mat-nav-list> </mat-nav-list>
+  </mat-sidenav>
+
+  <div class="my-sidenav-content" fxLayout="column" fxFlex="100">
+    <mat-toolbar
+      *ngIf="module"
+      color="primary"
+      fxLayout="row"
+      class="p-0 mailbox-sidenav-header"
+      fxLayoutAlign="space-between center"
+    >
+      <small class="titre"
+        >{{ "fonctionnalites" | translate }} [{{ module.module.nom }}]</small
+      >
+      <button mat-icon-button (click)="addFonction()">
+        <mat-icon style="font-size: 12px">add_circle</mat-icon>
+      </button>
+    </mat-toolbar>
+    <ngx-datatable
+      *ngIf="module"
+      class="material striped"
+      [headerHeight]="25"
+      [columnMode]="'force'"
+      [footerHeight]="35"
+      [rowHeight]="'auto'"
+      [rows]="fonctions"
+      limit="15"
+    >
+      <ngx-datatable-column prop="fonction" [sortable]="false">
+        <ng-template ngx-datatable-header-template>
+          <span></span>
+        </ng-template>
+        <ng-template
+          ngx-datatable-cell-template
+          let-value="value"
+          let-row="row"
+        >
+          {{ value.nom }}
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column
+        [width]="60"
+        [canAutoResize]="false"
+        [sortable]="false"
+      >
+        <ng-template ngx-datatable-header-template>
+          <span></span>
+        </ng-template>
+        <ng-template
+          ngx-datatable-cell-template
+          let-value="value"
+          let-row="row"
+        >
+          <div
+            fxLayout="row"
+            fxLayoutAlign="end center"
+            style="padding-top: 5px"
+          >
+            <mat-icon class="iconSize" (click)="delFonction(row)" color="warn"
+              >delete
+            </mat-icon>
+          </div>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </div>
+</mat-sidenav-container>

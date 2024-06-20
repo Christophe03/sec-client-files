@@ -1,0 +1,62 @@
+<div
+  class="mat-dialog-title"
+  style="margin-bottom: 10px"
+  fxLayoutAlign="space-between center"
+>
+  <mat-label>{{ title | translate }}</mat-label>
+  <button class="close" mat-button (click)="closeDialog()">X</button>
+</div>
+<div>
+  <div fxFlex="100" fxLayout="row">
+    <div fxFlex="100" fxLayout="column">
+      <ngx-datatable
+        class="material striped"
+        [headerHeight]="25"
+        [columnMode]="'force'"
+        [footerHeight]="35"
+        [rowHeight]="'auto'"
+        [rows]="fonctions"
+        limit="10"
+        [selected]="selected"
+        [selectionType]="'checkbox'"
+      >
+        <ngx-datatable-column
+          [width]="30"
+          [sortable]="false"
+          [canAutoResize]="false"
+          [draggable]="false"
+          [resizeable]="false"
+          [headerCheckboxable]="false"
+          [checkboxable]="true"
+        >
+        </ngx-datatable-column>
+        <ngx-datatable-column
+          prop="nom"
+          [sortable]="false"
+          [width]="570"
+          [canAutoResize]="false"
+        >
+          <ng-template ngx-datatable-header-template sho>
+            <span>{{ "nom" | translate }}</span>
+          </ng-template>
+          <ng-template
+            ngx-datatable-cell-template
+            let-value="value"
+            let-row="row"
+          >
+            {{ value }}
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="save()"
+        [disabled]="selected.length === 0"
+        style="width: 100px; margin-left: 10px"
+      >
+        {{ "btn.ajouter" | translate }}
+      </button>
+    </div>
+  </div>
+</div>

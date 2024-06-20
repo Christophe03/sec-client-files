@@ -1,0 +1,47 @@
+.my-container {
+  height: 500px;
+
+  .mat-toolbar {
+    padding: 0 0px;
+    min-height: 26px !important;
+  }
+
+  .mat-toolbar-single-row {
+    height: 26px;
+  }
+}
+
+.my-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.my-sidenav {
+  user-select: none;
+  width: 350px;
+  border-right: 1px solid transparent;
+}
+
+.titre {
+  font-size: 12px;
+  padding-left: 20px;
+}
+
+.desc {
+  font-size: 13px;
+  padding-left: 0px;
+  font-weight: bold;
+}
+
+.customIconSize {
+  font-size: 20px;
+  // height: 20px;
+  // width: 20px;
+}
+
+.iconSize {
+  font-size: 12px;
+  // height: 20px;
+  // width: 20px;
+}

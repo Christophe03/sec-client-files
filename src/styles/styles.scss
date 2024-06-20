@@ -1,0 +1,24 @@
+@import "./base"; //Ok
+@import "../../node_modules/@swimlane/ngx-datatable/themes/material.css"; //OK
+@import "../../node_modules/@swimlane/ngx-datatable/assets/icons.css"; //OK
+
+@font-face {
+  font-family: "Dune";
+  src: url("../assets/fonts/Dune_Rise.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Russo";
+  src: url("../assets/fonts/RussoOne-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

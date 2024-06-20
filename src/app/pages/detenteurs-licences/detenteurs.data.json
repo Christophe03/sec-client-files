@@ -1,0 +1,42 @@
+{
+  "detenteurs_de_licences": {
+    "licences_actives": [
+      {
+        "nom": "John Doe",
+        "type_licence": "Pilote Commercial",
+        "date_de_délivrance": "15/06/2023",
+        "date_d'expiration": "15/06/2025"
+      },
+      {
+        "nom": "Jane Smith",
+        "type_licence": "Instructeur de Vol",
+        "date_de_délivrance": "20/06/2023",
+        "date_d'expiration": "20/06/2024"
+      }
+    ],
+    "licences_expirées": [
+      {
+        "nom": "Michael Brown",
+        "type_licence": "Mécanicien d'Aéronef",
+        "date_de_délivrance": "10/01/2022",
+        "date_d'expiration": "10/01/2023"
+      }
+    ],
+    "licences_suspendues": [
+      {
+        "nom": "Emily White",
+        "type_licence": "Pilote Privé",
+        "date_de_délivrance": "01/02/2023",
+        "date_d'expiration": "01/02/2024"
+      }
+    ],
+    "licences_révoquées": [
+      {
+        "nom": "Robert Green",
+        "type_licence": "Contrôleur Aérien",
+        "date_de_délivrance": "05/03/2023",
+        "date_d'expiration": "05/03/2024"
+      }
+    ]
+  }
+}

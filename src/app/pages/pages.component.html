@@ -1,0 +1,65 @@
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="medium"
+  color="#fff"
+  type="square-jelly-box"
+  [fullScreen]="true"><p style="color: white">{{ "wait.please" | translate
+    }}</p></ngx-spinner>
+<mat-sidenav-container>
+  <mat-sidenav
+    *ngIf="settings.menu === 'vertical'"
+    [opened]="settings.sidenavIsOpened"
+    [mode]="settings.sidenavIsPinned ? 'side' : 'over'"
+    #sidenav
+    class="sidenav mat-elevation-z6">
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content id="main" (psScrollY)="onPsScrollY($event)">
+    <mat-toolbar
+      color="primary"
+      class="horizontal-menu transition-2"
+      [class.fixed-top]="!settings.fixedHeader">
+      <div fxLayout="row" fxLayoutAlign="space-between stretch" class="w-100">
+        <div fxLayout="row" fxLayoutAlign="center stretch">
+          <div class="flexrh">Logo</div>
+          <!-- <div class="bordure"></div> -->
+
+          <div fxLayout="row" fxLayoutAlign="start center" class="w-100">
+            <app-horizontal-menu [menuParentId]="0"></app-horizontal-menu>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="end center">
+          <app-fullscreen></app-fullscreen>
+          <app-user-menu></app-user-menu>
+        </div>
+      </div>
+    </mat-toolbar>
+
+    <!-- <mat-toolbar
+      id="horizontal-menu"
+      color="primary"
+      *ngIf="settings.menu === 'horizontal'"
+      class="horizontal-menu flex-p-x transition-2"
+      [class.fixed-top]="!settings.fixedHeader"
+    >
+      <div fxLayout="row" fxLayoutAlign="start center" class="w-100">
+        <app-horizontal-menu [menuParentId]="0"></app-horizontal-menu>
+      </div>
+    </mat-toolbar> -->
+
+    <app-breadcrumb></app-breadcrumb>
+    <div
+      id="main-content"
+      class="inner-sidenav-content transition-2"
+      (psScrollY)="onPsScrollY($event)">
+      <div [class.has-footer]="settings.hasFooter">
+        <router-outlet></router-outlet>
+      </div>
+      <!-- <ng-scrollbar>
+        <div [class.has-footer]="settings.hasFooter">
+          <router-outlet></router-outlet>
+        </div>
+      </ng-scrollbar> -->
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

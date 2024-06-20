@@ -1,0 +1,314 @@
+[
+    {
+        "code": "A0",
+        "nom": "app.administration",
+        "context": "/api-flexrh-core",
+        "port": "8080",
+        "ordre": 0,
+        "icon": "dashboard",
+        "modules": [
+            {
+                "nom": "menu.tableau.de.bord",
+                "ordre": 0,
+                "link": "/dashboard",
+                "icon": "dashboard",
+                "fonctions": []
+            },
+            {
+                "nom": "menu.dossiers.du.personnel",
+                "ordre": 1,
+                "link": "/dossiers",
+                "icon": "dashboard",
+                "fonctions": []
+            },
+            {
+                "nom": "menu.referentiel.rh",
+                "ordre": 2,
+                "link": "/referentiels",
+                "icon": "dashboard",
+                "fonctions": [
+                    {
+                        "nom": "menu.postes",
+                        "link": "/referentiels/poste",
+                        "icon": "arrow_right",
+                        "ordre": 1
+                    },
+                    {
+                        "nom": "menu.departements",
+                        "link": "/referentiels/departement",
+                        "icon": "arrow_right",
+                        "ordre": 2
+                    },
+                    {
+                        "nom": "menu.constantes",
+                        "link": "/referentiels/constantes",
+                        "icon": "arrow_right",
+                        "ordre": 9
+                    }
+                ]
+            },
+            {
+                "nom": "menu.rapports",
+                "ordre": 3,
+                "link": "/rapports",
+                "icon": "dashboard",
+                "fonctions": []
+            },
+            {
+                "nom": "menu.parametres",
+                "ordre": 4,
+                "link": "/parametres",
+                "icon": "dashboard",
+                "fonctions": [
+                    {
+                        "nom": "menu.utilisateurs",
+                        "link": "/parametres/utilisateur",
+                        "icon": "arrow_right",
+                        "ordre": 1
+                    },
+                    {
+                        "nom": "menu.groupes",
+                        "link": "/parametres/groupe",
+                        "icon": "arrow_right",
+                        "ordre": 2
+                    },
+                    {
+                        "nom": "menu.structures",
+                        "link": "/parametres/structure",
+                        "icon": "arrow_right",
+                        "ordre": 3
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "code": "A1",
+        "nom": "app.recrutement",
+        "context": "/api-flexrh-recrutement",
+        "port": "8081",
+        "ordre": 1,
+        "icon": "dashboard",
+        "modules": [
+            {
+                "nom": "menu.tableau.de.bord",
+                "ordre": 0,
+                "link": "/dashboard",
+                "icon": "dashboard",
+                "fonctions": []
+            },
+            {
+                "nom": "menu.postes",
+                "ordre": 1,
+                "link": "/postes",
+                "icon": "dashboard",
+                "fonctions": []
+            },
+            {
+                "nom": "menu.candidatures",
+                "ordre": 2,
+                "link": "/candidatures",
+                "icon": "dashboard",
+                "fonctions": []
+            },
+            {
+                "nom": "menu.cv.et.lettres",
+                "ordre": 3,
+                "link": "/cv-et-lettres",
+                "icon": "dashboard",
+                "fonctions": []
+            },
+            {
+                "nom": "menu.rapports",
+                "ordre": 4,
+                "link": "/rapports",
+                "icon": "dashboard",
+                "fonctions": []
+            },
+            {
+                "nom": "menu.parametres",
+                "ordre": 5,
+                "link": "/parametres",
+                "icon": "dashboard",
+                "fonctions": [
+                    {
+                        "nom": "menu.etapes",
+                        "link": "/parametres/etapes",
+                        "icon": "arrow_right",
+                        "ordre": 1
+                    },
+                    {
+                        "nom": "menu.origines",
+                        "link": "/parametres/origines",
+                        "icon": "arrow_right",
+                        "ordre": 2
+                    },
+                    {
+                        "nom": "menu.niveau.d.etudes",
+                        "link": "/parametres/niveau-etudes",
+                        "icon": "arrow_right",
+                        "ordre": 3
+                    },
+                    {
+                        "nom": "menu.raisons.de.refus",
+                        "link": "/parametres/raisons-refus",
+                        "icon": "arrow_right",
+                        "ordre": 4
+                    },
+                    {
+                        "nom": "menu.etiquettes",
+                        "link": "/parametres/etiquettes",
+                        "icon": "arrow_right",
+                        "ordre": 5
+                    },
+                    {
+                        "nom": "menu.appreciations",
+                        "link": "/parametres/appreciations",
+                        "icon": "arrow_right",
+                        "ordre": 6
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "code": "A2",
+        "nom": "app.formation",
+        "context": "/api-flexrh-formation",
+        "port": "8082",
+        "ordre": 2,
+        "icon": "dashboard",
+        "modules": [
+            {
+                "nom": "menu.tableau.de.bord",
+                "ordre": 0,
+                "link": "/dashboard",
+                "icon": "dashboard",
+                "fonctions": []
+            },
+            {
+                "nom": "menu.catalogue",
+                "ordre": 1,
+                "link": "/catalogue",
+                "icon": "dashboard",
+                "fonctions": []
+            },
+            {
+                "nom": "menu.planification",
+                "ordre": 2,
+                "link": "/planification",
+                "icon": "dashboard",
+                "fonctions": [
+                    {
+                        "nom": "menu.budget",
+                        "link": "/planification/budget",
+                        "icon": "arrow_right",
+                        "ordre": 1
+                    },
+                    {
+                        "nom": "menu.elaboration.du.plan",
+                        "link": "/planification/elaboration-du-plan",
+                        "icon": "arrow_right",
+                        "ordre": 2
+                    },
+                    {
+                        "nom": "menu.suivi.du.plan",
+                        "link": "/planification/suivi-du-plan",
+                        "icon": "arrow_right",
+                        "ordre": 3
+                    }
+                ]
+            },
+            {
+                "nom": "menu.rapport",
+                "ordre": 3,
+                "link": "/rapport",
+                "icon": "dashboard",
+                "fonctions": []
+            },
+            {
+                "nom": "menu.parametres",
+                "ordre": 4,
+                "link": "/parametres",
+                "icon": "dashboard",
+                "fonctions": [
+                    {
+                        "nom": "menu.utilisateurs",
+                        "link": "parametres/utilisateurs",
+                        "icon": "arrow_right",
+                        "ordre": 1
+                    },
+                    {
+                        "nom": "menu.competences",
+                        "link": "parametres/competences",
+                        "icon": "arrow_right",
+                        "ordre": 2
+                    },
+                    {
+                        "nom": "menu.financements",
+                        "link": "parametres/financements",
+                        "icon": "arrow_right",
+                        "ordre": 3
+                    },
+                    {
+                        "nom": "menu.connaissances",
+                        "link": "parametres/connaissances",
+                        "icon": "arrow_right",
+                        "ordre": 4
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "code": "A3",
+        "nom": "app.entretien",
+        "context": "/api-flexrh-entretien",
+        "port": "8083",
+        "ordre": 3,
+        "icon": "dashboard",
+        "modules": [
+            {
+                "nom": "menu.tableau.de.bord",
+                "ordre": 0,
+                "link": "/dashboard",
+                "icon": "dashboard",
+                "fonctions": []
+            }
+        ]
+    },
+    {
+        "code": "A4",
+        "nom": "app.conge.absence",
+        "context": "/api-flexrh-conge",
+        "port": "8084",
+        "ordre": 4,
+        "icon": "dashboard",
+        "modules": [
+            {
+                "nom": "menu.tableau.de.bord",
+                "ordre": 0,
+                "link": "/dashboard",
+                "icon": "dashboard",
+                "fonctions": []
+            }
+        ]
+    },
+    {
+        "code": "A7",
+        "nom": "app.missions.notes.frais",
+        "context": "/api-flexrh-missions",
+        "port": "8087",
+        "ordre": 7,
+        "icon": "dashboard",
+        "modules": [
+            {
+                "nom": "menu.tableau.de.bord",
+                "ordre": 0,
+                "link": "/dashboard",
+                "icon": "dashboard",
+                "fonctions": []
+            }
+        ]
+    }
+]

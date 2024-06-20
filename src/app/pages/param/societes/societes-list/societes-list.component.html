@@ -1,0 +1,164 @@
+<div fxLayout="row wrap">
+  <div fxFlex="100" class="flex-p">
+    <mat-card fxLayout="row">
+      <div fxFlex="100" fxLayout="column">
+        <mat-label class="page-title"
+          >{{ "Liste des sociétés" | translate }}
+        </mat-label>
+      </div></mat-card
+    >
+  </div>
+</div>
+
+<!-- <div class="mat-elevation-z2" fxLayout="column" class="py-b">
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxLayout="column" fxFlex="100">
+      BLABLKA -->
+<!-- <mat-card fxLayout="row">
+        <div
+          fxLayout="row"
+          class="p-rl-10"
+          fxFlex="12"
+          fxLayoutAlign="center start"
+        >
+          <button (click)="add()" mat-flat-button color="primary">
+            <mat-icon>add_circle</mat-icon>
+            {{ "btn.nouveau" | translate }}
+          </button>
+        </div>
+        <div fxLayout="row" fxFlex="88" fxLayoutAlign="start center">
+          <div class="list-search">
+            <div fxLayout="column">
+              <mat-form-field appearance="outline">
+                <input
+                  matInput
+                  placeholder="{{ 'recherche...' | translate }}"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </mat-card> -->
+<!-- </div>
+  </div>
+</div> -->
+
+<div fxLayout="row wrap">
+  <div fxFlex="100" class="flex-p">
+    <mat-card fxLayout="column">
+      <div fxLayout="row" fxFlex="100" class="flex-p">
+        <div fxLayout="row" fxFlex="12" fxLayoutAlign="start start">
+          <button
+            class="btn-fl-width"
+            (click)="add()"
+            mat-flat-button
+            color="primary"
+          >
+            <mat-icon>add_circle</mat-icon>
+            {{ "btn.nouveau" | translate }}
+          </button>
+        </div>
+        <div fxLayout="row" fxFlex="1"></div>
+        <div fxLayout="row" fxFlex="87" fxLayoutAlign="start center">
+          <div class="list-search">
+            <div fxLayout="column">
+              <mat-form-field appearance="outline">
+                <input
+                  matInput
+                  placeholder="{{ 'recherche...' | translate }}"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div fxLayout="row" fxFlex="100" class="flex-p"> -->
+      <div fxLayout="column" class="flex-p">
+        <div class="prefix-css">
+          <ngx-datatable
+            class="material striped"
+            [headerHeight]="25"
+            [columnMode]="ColumnMode.force"
+            [footerHeight]="35"
+            [rowHeight]="'auto'"
+            [rows]="rows"
+            [limit]="nbligne"
+            [loadingIndicator]="loading"
+          >
+            <ngx-datatable-column
+              [width]="70"
+              [canAutoResize]="false"
+              prop="sigle"
+            >
+              <ng-template ngx-datatable-header-template let-sort="sortFn">
+                <span>{{ "Sigle" | translate }}</span>
+              </ng-template>
+              <ng-template
+                ngx-datatable-cell-template
+                let-value="value"
+                let-row="row"
+              >
+                <div (click)="edit(row)">
+                  {{ value }}
+                </div>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column prop="raisonSocial">
+              <ng-template ngx-datatable-header-template let-sort="sortFn">
+                <span>{{ "Raison social" | translate }}</span>
+              </ng-template>
+              <ng-template
+                ngx-datatable-cell-template
+                let-value="value"
+                let-row="row"
+              >
+                <div (click)="edit(row)">
+                  {{ value }}
+                </div>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column
+              [sortable]="false"
+              [width]="200"
+              [canAutoResize]="false"
+              prop="email"
+            >
+              <ng-template ngx-datatable-header-template let-sort="sortFn">
+                <span>{{ "Email" | translate }}</span>
+              </ng-template>
+              <ng-template
+                ngx-datatable-cell-template
+                let-value="value"
+                let-row="row"
+              >
+                <div (click)="edit(row)">
+                  {{ value }}
+                </div>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column
+              [sortable]="false"
+              [width]="150"
+              [canAutoResize]="false"
+              prop="telephone"
+            >
+              <ng-template ngx-datatable-header-template let-sort="sortFn">
+                <span>{{ "Téléphone" | translate }}</span>
+              </ng-template>
+              <ng-template
+                ngx-datatable-cell-template
+                let-value="value"
+                let-row="row"
+              >
+                <div (click)="edit(row)">
+                  {{ value }}
+                </div>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+      <!-- </div> -->
+    </mat-card>
+  </div>
+</div>

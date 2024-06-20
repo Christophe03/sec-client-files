@@ -1,0 +1,53 @@
+<!-- eslint-disable -->
+<div fxLayout="row wrap" *ngIf="router.url !== '/'">
+  <div fxFlex="100">
+    <mat-card fxLayout="row" class="breadcrumb">
+      <div fxLayout="row" fxFlex="70" fxLayoutAlign="start center">
+        <!-- <a
+          *ngIf="router.url !== '/'"
+          routerLink="/mes-taches"
+          class="breadcrumb-item-perso"
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          (click)="closeSubMenus()"
+        >
+          <mat-icon>home</mat-icon>
+          <span class="breadcrumb-title">{{ "Mes taches" | translate }}</span>
+        </a> -->
+        <div
+          *ngFor="let breadcrumb of breadcrumbs; let i = index"
+          class="breadcrumb-item"
+          fxLayout="row"
+          fxLayoutAlign="start center"
+        >
+          <a
+            [hidden]="i === breadcrumbs.length - 1"
+            [routerLink]="[breadcrumb.url]"
+            >{{ breadcrumb.name | translate }}</a
+          >
+          <span
+            [hidden]="i != breadcrumbs.length - 1"
+            class="breadcrumb-title active"
+            >{{ breadcrumb.name | translate }}</span
+          >
+        </div>
+      </div>
+      <div
+        fxFlex="30"
+        class="breadcrumb-item"
+        fxLayout="row"
+        fxLayoutAlign="end center"
+      >
+        <a
+          *ngIf="backLink && backLink !== ''"
+          class="breadcrumb-item"
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          (click)="back()"
+        >
+          <mat-icon matTooltip="{{ 'retour' | translate }}">backspace</mat-icon>
+        </a>
+      </div>
+    </mat-card>
+  </div>
+</div>

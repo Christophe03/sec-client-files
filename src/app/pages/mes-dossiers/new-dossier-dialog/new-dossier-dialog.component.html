@@ -1,0 +1,64 @@
+<div
+  class="mat-dialog-title"
+  style="margin-bottom: 10px"
+  fxLayoutAlign="space-between center"
+>
+  <mat-label>{{ "Ajouter un nouveau dossier" | translate }}</mat-label>
+  <button class="close" mat-button (click)="closeDialog()">X</button>
+</div>
+<div>
+  <div fxFlex="100" fxLayout="column" class="flex-p">
+    <form [formGroup]="form" fxLayout="column" fxFlex="100">
+      <div fxFlex="100" fxLayout="row">
+        <div fxFlex="100" fxLayout="column" class="no-error">
+          <!-- Ligne 1 -->
+          <div fxFlex="100" fxLayout="row">
+            <!-- NOM FR -->
+            <div fxFlex="100" fxLayout="column">
+              <mat-form-field appearance="outline">
+                <mat-label>{{ "Nom du dossier" | translate }}</mat-label>
+                <input
+                  [readonly]="isLoading"
+                  placeholder="{{ 'Nom du dossier en francais' | translate }}"
+                  formControlName="nomfr"
+                  matInput
+                />
+              </mat-form-field>
+            </div>
+          </div>
+          <!-- Ligne 2 -->
+          <!-- <div fxFlex="100" fxLayout="row">
+            <div fxFlex="100" fxLayout="column">
+              <mat-form-field appearance="outline">
+                <mat-label>{{
+                  "Nom du dossier en anglais" | translate
+                }}</mat-label>
+                <input
+                  [readonly]="isLoading"
+                  placeholder="{{ 'Nom du dossier en anglais' | translate }}"
+                  formControlName="nomen"
+                  matInput
+                />
+              </mat-form-field>
+            </div>
+          </div> -->
+        </div>
+      </div>
+      @if (!isLoading) {
+      <div fxFlex="100" fxLayout="row">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="save()"
+          [disabled]="!form.valid"
+        >
+          {{ "Enregister" | translate }}
+        </button>
+      </div>
+      }
+    </form>
+  </div>
+</div>
+@if(isLoading){
+<mat-progress-bar color="primary" mode="query"></mat-progress-bar>
+}

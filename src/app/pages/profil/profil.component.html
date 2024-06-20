@@ -1,0 +1,21 @@
+<div fxLayout="row wrap">
+  <div fxFlex="100" class="flex-p">
+    <mat-card fxLayout="row">
+      <div fxFlex="100" fxLayout="column">
+        <mat-label class="page-title"
+          >{{ "changer.mes.preferences" | translate }}
+        </mat-label>
+      </div></mat-card
+    >
+  </div>
+</div>
+<div class="mat-elevation-z2" fxLayout="column" class="flex-p">
+  <mat-tab-group (selectedTabChange)="onTabChange($event)">
+    <mat-tab label="{{ 'preferences' | translate }}">
+      <app-profil-prefs></app-profil-prefs
+    ></mat-tab>
+    <mat-tab label="{{ 'securite.du.compte' | translate }}"
+      ><app-profil-secu></app-profil-secu>
+    </mat-tab>
+  </mat-tab-group>
+</div>

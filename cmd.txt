@@ -1,0 +1,8 @@
+#ESLint
+sudo ng add @angular-eslint/schematics
+ng lint
+ng lint --fix
+
+#docker
+sudo docker build -t registry.gitlab.com/flex-rh/core/frontend:latest .
+sudo docker build -t registry.gitlab.com/flex-rh/core/backend:latest .

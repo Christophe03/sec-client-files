@@ -1,0 +1,49 @@
+<!-- eslint-disable -->
+<button
+  mat-icon-button
+  [matMenuTriggerFor]="userMenu"
+  #userMenuTrigger="matMenuTrigger">
+  <mat-icon>account_circle</mat-icon>
+</button>
+
+<mat-menu
+  #userMenu="matMenu"
+  [overlapTrigger]="false"
+  class="toolbar-dropdown-menu user-menu">
+  <!--<span (mouseleave)="userMenuTrigger.closeMenu()">-->
+  <mat-toolbar color="primary" *ngIf="user && user.id > 0">
+    <div
+      fxLayout="row"
+      fxLayoutAlign="start center"
+      class="user-info"
+      style="padding: 2px 0px">
+      <img
+        [src]="userImage"
+        alt="user-image"
+        width="32"
+        height="32"
+        class="rounded mat-elevation-z6" />
+      <p>
+        {{ user?.name }}<br />
+        <!-- <small>({{ user?.groupeUser?.libelle }}) </small><br /> -->
+        <small class="connextion"><i>{{ "derniere.connexion" | translate }}
+            {{ user?.lastAccess | date : "dd/MM/yyyy HH:mm" }}
+          </i></small>
+      </p>
+    </div>
+  </mat-toolbar>
+  <a mat-menu-item routerLink="/profil">
+    <mat-icon>edit</mat-icon>
+    <span>{{ "preferences" | translate }}</span>
+  </a>
+  <a mat-menu-item (click)="openHelp()">
+    <mat-icon>help</mat-icon>
+    <span>{{ "help" | translate }}</span>
+  </a>
+  <div class="divider"></div>
+  <a mat-menu-item (click)="logout()">
+    <mat-icon>power_settings_new</mat-icon>
+    <span>{{ "deconnexion" | translate }}</span>
+  </a>
+  <!--</span>-->
+</mat-menu>

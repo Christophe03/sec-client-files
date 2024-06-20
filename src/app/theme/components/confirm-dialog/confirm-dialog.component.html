@@ -1,0 +1,17 @@
+<div
+  class="mat-dialog-title"
+  style="margin-bottom: 10px"
+  fxLayoutAlign="space-between center"
+>
+  <mat-label>{{ modalTitle | translate }}</mat-label>
+</div>
+<div>
+  <mat-dialog-content>{{ message }}</mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button mat-dialog-close color="primary">{{ no }}</button>
+    <span style="padding-left: 5px"></span>
+    <button mat-raised-button [mat-dialog-close]="true" color="warn">
+      {{ yes }}
+    </button>
+  </mat-dialog-actions>
+</div>

@@ -1,0 +1,64 @@
+<div fxLayout="row wrap" #resizedDiv>
+  <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="50" class="flex-p">
+    <mat-card class="p-0">
+      <mat-card-header class="p-1 bg-color-blue"
+        fxLayoutAlign="space-between center">
+        <mat-card-subtitle
+          class="m-0">{{'demandes.de.conge'|translate}}</mat-card-subtitle>
+        <div class="box">{{model.nbrecrutT}}</div>
+      </mat-card-header>
+      <div class="w-100 h-40p afficher" fxLayoutAlign="space-between center">
+        <div class="mesdemande"> {{'mes.demandes' | translate}} :
+          {{model.nbrecrutM}}</div>
+        <!-- <div class="afficher" (click)="showDemandes()"> {{'afficher' | translate}}</div> -->
+      </div>
+    </mat-card>
+  </div>
+
+  <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="50" class="flex-p">
+    <mat-card class="p-0">
+      <mat-card-header class="p-1 bg-color-green"
+        fxLayoutAlign="space-between center">
+        <mat-card-subtitle
+          class="m-0">{{'demandes.d.absences'|translate}}</mat-card-subtitle>
+        <div class="box">{{model.nbabsenceT}}</div>
+      </mat-card-header>
+      <div class="w-100 h-40p afficher" fxLayoutAlign="space-between center">
+        <div class="mesdemande"> {{'mes.demandes' | translate}} :
+          {{model.nbabsenceM}}</div>
+        <div class="afficher"> {{'afficher' | translate}}</div>
+      </div>
+    </mat-card>
+  </div>
+  <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="50" class="flex-p">
+    <mat-card class="p-0">
+      <mat-card-header class="p-1 bg-color-violet"
+        fxLayoutAlign="space-between center">
+        <mat-card-subtitle
+          class="m-0">{{'demandes.de.formation'|translate}}</mat-card-subtitle>
+        <div class="box">{{model.nbformationT}}</div>
+      </mat-card-header>
+      <div class="w-100 h-40p afficher" fxLayoutAlign="space-between center">
+        <div class="mesdemande"> {{'mes.demandes' | translate}} :
+          {{model.nbformationM}}</div>
+        <div class="afficher"> {{'afficher' | translate}}</div>
+      </div>
+    </mat-card>
+  </div>
+  <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="50" class="flex-p">
+    <mat-card class="p-0">
+      <mat-card-header class="p-1 bg-color-orange"
+        fxLayoutAlign="space-between center">
+        <mat-card-subtitle
+          class="m-0">{{'demandes.de.remboursement'|translate}}</mat-card-subtitle>
+        <div class="box">{{model.nbrembT}}</div>
+      </mat-card-header>
+      <div class="w-100 h-40p afficher" fxLayoutAlign="space-between center">
+        <div class="mesdemande"> {{'mes.demandes' | translate}} :
+          {{model.nbrembM}}</div>
+        <div class="afficher"> {{'afficher' | translate}}</div>
+      </div>
+    </mat-card>
+  </div>
+
+</div>

@@ -1,0 +1,133 @@
+<div fxLayout="row wrap">
+  <div fxFlex="100" class="flex-p">
+    <mat-card fxLayout="row">
+      <div fxFlex="100" fxLayout="column">
+        <mat-label class="page-title">{{ "Detenteur de Licence" | translate
+          }}</mat-label>
+      </div>
+    </mat-card>
+  </div>
+</div>
+
+<div fxLayout="row" fxLayoutAlign="space-between center" class="flex-p">
+  <div fxLayout="column" fxFlex="100">
+    <div fxLayout="row" fxLayoutAlign="space-between center" class>
+      <div fxLayout="column" fxFlex="100">
+        <mat-button-toggle-group
+          #controls="matButtonToggleGroup"
+          appearance="legacy">
+          <div
+            fxLayout="row"
+            fxFlex="4"
+            fxLayoutAlign="center center"
+            class="page-title">
+            <button
+              mat-icon-button
+              color="primary"
+              matTooltip="{{ 'creer' | translate }}">
+              <mat-icon>add_circle</mat-icon>
+            </button>
+          </div>
+          <div fxLayout="row" fxFlex="75" fxLayoutAlign="start center">
+            <form class="list-search">
+              <mat-form-field appearance="outline">
+                <input
+                  matInput
+                  placeholder="{{ 'recherche...' | translate }}" />
+              </mat-form-field>
+            </form>
+          </div>
+          <div fxFlex="1" fxLayout="column"></div>
+          <div fxFlex="15" fxLayout="column">
+            <div class="list-search">
+              <mat-form-field appearance="outline">
+                <mat-select placeholder="{{ 'Statut' | translate }}">
+                  <mat-option value="A">{{ "Licence actives" | translate
+                    }}</mat-option>
+                  <mat-option value="M">{{ "Licence expirées" | translate
+                    }}</mat-option>
+                  <mat-option value="C">{{ "Licences suspendues" | translate
+                    }}</mat-option>
+                  <mat-option value="C">{{ "Licences révoquées" | translate
+                    }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxLayout="row" fxFlex="5" fxLayoutAlign="end center">
+            <button
+              mat-icon-button
+              color="primary"
+              matTooltip="{{ 'imprimer' | translate }}">
+              <mat-icon>print</mat-icon>
+            </button>
+          </div>
+        </mat-button-toggle-group>
+      </div>
+    </div>
+    <div fxLayout="column">
+      <div class="prefix-css">
+        <ngx-datatable class="material striped"
+          [headerHeight]="25"
+          [columnMode]="ColumnMode.force"
+          [footerHeight]="35"
+          [rowHeight]="'auto'"
+          [rows]="rows"
+          [limit]="nbligne">
+          <ngx-datatable-column prop="nom">
+            <ng-template ngx-datatable-header-template let-sort="sortFn">
+              <span>{{ "Prénom et Nom" | translate }}</span>
+            </ng-template>
+            <ng-template ngx-datatable-cell-template let-value="value"
+              let-row="row">
+              <div>{{ value }}</div>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column prop="type_licence">
+            <ng-template ngx-datatable-header-template let-sort="sortFn">
+              <span>{{ "Type de licence" | translate }}</span>
+            </ng-template>
+            <ng-template ngx-datatable-cell-template let-value="value"
+              let-row="row">
+              <div>{{ value }}</div>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column prop="date_de_délivrance">
+            <ng-template ngx-datatable-header-template let-sort="sortFn">
+              <span>{{ "Date de délivrance" | translate }}</span>
+            </ng-template>
+            <ng-template ngx-datatable-cell-template let-value="value"
+              let-row="row">
+              <div>{{ value }}</div>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column prop="date_d_expiration">
+            <ng-template ngx-datatable-header-template let-sort="sortFn">
+              <span>{{ "Date d'expiration" | translate }}</span>
+            </ng-template>
+            <ng-template ngx-datatable-cell-template let-value="value"
+              let-row="row">
+              <div>{{ value }}</div>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column [width]="150" [canAutoResize]="false"
+            prop="statut" [sortable]="false">
+            <ng-template ngx-datatable-header-template>
+              <span>{{ "Action" | translate }}</span>
+            </ng-template>
+            <ng-template ngx-datatable-cell-template let-value="value"
+              let-row="row">
+              <div class="datatable-box-chip">
+                <div>
+                  <span style="color: rgb(52, 127, 224);">modifier /
+                    details</span>
+                </div>
+                <!-- Ici vous pouvez ajouter le contenu en fonction de vos besoins -->
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+        </ngx-datatable>
+      </div>
+    </div>
+  </div>
+</div>

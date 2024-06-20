@@ -1,0 +1,33 @@
+.user-menu {
+
+  // .mat-toolbar,
+  // .mat-toolbar-row {
+  //    height: 80px !important;
+  // }
+
+  .user-info {
+    width: 230px;
+
+    p {
+      font-size: 14px;
+      line-height: 16px;
+      text-align: left;
+      padding-left: 10px;
+    }
+
+    small {
+      font-size: 12px;
+      font-weight: normal;
+    }
+
+    .connextion {
+      font-size: 10px;
+      color: #FFF;
+    }
+  }
+
+  .mat-menu-item {
+    height: 36px;
+    line-height: 36px;
+  }
+}

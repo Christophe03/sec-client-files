@@ -1,0 +1,285 @@
+<div fxLayout="row wrap">
+  <div fxFlex="100" class="flex-p">
+    <mat-card fxLayout="row">
+      <div fxFlex="100" fxLayout="column">
+        <mat-label class="page-title"
+          >{{ "Mes taches" | translate }}
+        </mat-label>
+      </div></mat-card
+    >
+  </div>
+</div>
+<div fxLayout="row wrap">
+  <div fxFlex="100" class="flex-p">
+    <div fxLayout="column" fxFlex="28">
+      <!-- Liste des sociétés avec le nombre de fichier non traité -->
+      <div class="entete-tab">
+        <mat-card fxLayout="row">
+          <div fxFlex="100" fxLayout="column">
+            <mat-label class="page-title"
+              >{{ "Liste des sociétés" | translate }}
+            </mat-label>
+          </div></mat-card
+        >
+      </div>
+      <div fxLayout="column">
+        <div class="prefix-css">
+          <ngx-datatable
+            class="material striped"
+            [headerHeight]="25"
+            [columnMode]="ColumnMode.force"
+            [footerHeight]="35"
+            [rowHeight]="'auto'"
+            [rows]="societeList"
+            [limit]="nbligne"
+            [loadingIndicator]="loadingSociete"
+            [selected]="selected"
+            [selectionType]="SelectionType.single"
+            (select)="onSelect($event)"
+            [messages]="{ emptyMessage: 'Aucun document non traité!' }"
+          >
+            <ngx-datatable-column [sortable]="false">
+              <ng-template ngx-datatable-header-template let-sort="sortFn">
+                <span>{{ "Sigle & Nom" | translate }}</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                <div fxLayout="row">
+                  <div class="soc" fxLayout="column" fxFlex="90">
+                    <p class="soc-sigle">{{ row.sigle }}</p>
+                    <p class="soc-nom">{{ row.raisonSocial }}</p>
+                  </div>
+                  <div
+                    fxLayout="column"
+                    fxLayoutAlign="center center"
+                    fxFlex="10"
+                  >
+                    <div class="soc-nbre">{{ row.non_traite }}</div>
+                  </div>
+                </div>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="column" fxFlex="2"></div>
+    <div fxLayout="column" fxFlex="70">
+      <!-- tableau des fichiers devant etre traité -->
+      <div class="entete-tab" *ngIf="selectedSociete !== null">
+        <mat-card fxLayout="row">
+          <div fxFlex="100" fxLayout="column">
+            <mat-label class="page-title"
+              >{{ "Liste des fichiers non traités" | translate }}
+            </mat-label>
+          </div></mat-card
+        >
+      </div>
+      <div *ngIf="selectedSociete !== null" fxLayout="column" class="">
+        <div class="prefix-css">
+          <ngx-datatable
+            class="material striped"
+            [headerHeight]="25"
+            [columnMode]="ColumnMode.force"
+            [footerHeight]="35"
+            [rowHeight]="'auto'"
+            [rows]="fichierListe"
+            [limit]="nbligne"
+            [loadingIndicator]="loadingfichier"
+            [messages]="{
+              emptyMessage: 'Veuillez Selectionnez une société!'
+            }"
+          >
+            <!-- Pour les icones (dossier ou typeFichier du fichier en question) -->
+            <ngx-datatable-column
+              [sortable]="false"
+              [width]="70"
+              [canAutoResize]="false"
+            >
+              <ng-template ngx-datatable-header-template let-sort="sortFn">
+                <span></span>
+              </ng-template>
+              <ng-template
+                ngx-datatable-cell-template
+                let-value="value"
+                let-row="row"
+              >
+                <div>
+                  <img
+                    src="assets/img/files/pdf.png"
+                    alt="{{ value }}"
+                    *ngIf="row.typeFichier === 'pdf'"
+                  />
+                  <img
+                    src="assets/img/files/excel.png"
+                    alt="{{ value }}"
+                    *ngIf="row.typeFichier === 'xls'"
+                  />
+                  <img
+                    src="assets/img/files/excel.png"
+                    alt="{{ value }}"
+                    *ngIf="row.typeFichier === 'xlsx'"
+                  />
+                  <img
+                    src="assets/img/files/word.png"
+                    alt="{{ value }}"
+                    *ngIf="row.typeFichier === 'doc'"
+                  />
+                  <img
+                    src="assets/img/files/word.png"
+                    alt="{{ value }}"
+                    *ngIf="row.typeFichier === 'docx'"
+                  />
+                  <img
+                    src="assets/img/files/power_point.png"
+                    alt="{{ value }}"
+                    *ngIf="row.typeFichier === 'ppt'"
+                  />
+                  <img
+                    src="assets/img/files/power_point.png"
+                    alt="{{ value }}"
+                    *ngIf="row.typeFichier === 'pptx'"
+                  />
+                  <img
+                    src="assets/img/files/jpeg.png"
+                    alt="{{ value }}"
+                    *ngIf="row.typeFichier === 'jpeg'"
+                  />
+                  <img
+                    src="assets/img/files/png.png"
+                    alt="{{ value }}"
+                    *ngIf="row.typeFichier === 'png'"
+                  />
+                  <img
+                    src="assets/img/files/jpg.png"
+                    alt="{{ value }}"
+                    *ngIf="row.typeFichier === 'jpg'"
+                  />
+                  <img
+                    src="assets/img/files/excel.png"
+                    alt="{{ value }}"
+                    *ngIf="row.typeFichier === 'cvs'"
+                  />
+                  <img
+                    src="assets/img/files/html.png"
+                    alt="{{ value }}"
+                    *ngIf="row.typeFichier === 'html'"
+                  />
+                  <img
+                    src="assets/img/files/xml.png"
+                    alt="{{ value }}"
+                    *ngIf="row.typeFichier === 'xml'"
+                  />
+                </div>
+              </ng-template>
+            </ngx-datatable-column>
+
+            <!-- le nom  -->
+            <ngx-datatable-column prop="nom">
+              <ng-template ngx-datatable-header-template let-sort="sortFn">
+                <span>Nom</span>
+              </ng-template>
+              <ng-template
+                ngx-datatable-cell-template
+                let-value="value"
+                let-row="row"
+              >
+                <div>
+                  {{ value }}
+                </div>
+              </ng-template>
+            </ngx-datatable-column>
+            <!-- Extension -->
+            <!-- <ngx-datatable-column
+              [sortable]="false"
+              [width]="100"
+              [canAutoResize]="false"
+              prop="typeFichier"
+            >
+              <ng-template ngx-datatable-header-template let-sort="sortFn">
+                <span>Extension</span>
+              </ng-template>
+              <ng-template
+                ngx-datatable-cell-template
+                let-value="value"
+                let-row="row"
+              >
+                <div>
+                  {{ value }}
+                </div>
+              </ng-template>
+            </ngx-datatable-column> -->
+            <!-- Taille -->
+            <ngx-datatable-column
+              [sortable]="false"
+              [width]="100"
+              [canAutoResize]="false"
+              prop="taille"
+            >
+              <ng-template ngx-datatable-header-template let-sort="sortFn">
+                <span>Taille</span>
+              </ng-template>
+              <ng-template
+                ngx-datatable-cell-template
+                let-value="value"
+                let-row="row"
+              >
+                <div>
+                  {{ value }}
+                </div>
+              </ng-template>
+            </ngx-datatable-column>
+            <!-- Date création -->
+            <ngx-datatable-column
+              [sortable]="false"
+              [width]="150"
+              [canAutoResize]="false"
+              prop="dateUpload"
+            >
+              <ng-template ngx-datatable-header-template let-sort="sortFn">
+                <span>Date de dépot</span>
+              </ng-template>
+              <ng-template
+                ngx-datatable-cell-template
+                let-value="value"
+                let-row="row"
+              >
+                <div>
+                  {{ +value | millisecondeToDate | date : "dd-MM-yyyy HH:mm" }}
+                </div>
+              </ng-template>
+            </ngx-datatable-column>
+            <!-- Crée par -->
+            <ngx-datatable-column
+              [sortable]="false"
+              [width]="200"
+              [canAutoResize]="false"
+              prop="createur"
+            >
+              <ng-template ngx-datatable-header-template let-sort="sortFn">
+                <span>Déposer par</span>
+              </ng-template>
+              <ng-template
+                ngx-datatable-cell-template
+                let-value="value"
+                let-row="row"
+              >
+                @if(value === 'admin'){
+                <div>
+                  {{ value }}
+                </div>
+                } @else {
+                <div>
+                  <div *ngIf="value | jsonParse as user">
+                    <p>{{ user.name }}</p>
+                  </div>
+                </div>
+                }
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+</div>

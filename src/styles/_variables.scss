@@ -1,0 +1,115 @@
+@use "@angular/material" as mat;
+$font-family: "Roboto", sans-serif;
+
+$toolbar-height: 48px;
+$horizontal-menu-height: $toolbar-height;
+
+$sidenav-width: 250px;
+$sidenav-user-block-height: 156px;
+$mini-sidenav-user-block-height: 70px;
+
+$flex-distance: 8px;
+$inner-sidenav-content-padding: $flex-distance;
+
+//Login, Register, Errors box
+$box-height: 186px;
+$box-position: 34px;
+$register-box-height: 300px;
+
+$footer-height: 48px;
+
+$ms-primary: (
+  30: #40ff17,
+  40: #e1e1e1,
+  50: #ecf1f8,
+  100: #cfdcee,
+  200: #b0c5e3,
+  300: #90aed7,
+  400: #789ccf,
+  500: #608bc6,
+  600: #5883c0,
+  700: #4e78b9,
+  800: #446eb1,
+  900: #335ba4,
+  A100: #edf3ff,
+  A200: #bad1ff,
+  A400: #87afff,
+  A700: #6e9eff,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: white,
+    A400: white,
+    A700: white,
+  ),
+);
+$ms-secondary: (
+  30: #242424,
+  40: #e1e1e1,
+  50: #fdf5ec,
+  100: #fae6cf,
+  200: #f7d6b0,
+  300: #f4c690,
+  400: #f1b978,
+  500: #efad60,
+  600: #eda658,
+  700: #eb9c4e,
+  800: #e89344,
+  900: #e48333,
+  A100: #ffffff,
+  A200: #fffaf6,
+  A400: #ffddc3,
+  A700: #ffcfaa,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: white,
+    A400: white,
+    A700: white,
+  ),
+);
+
+$ms-green: (
+  50: #e7efe4,
+  100: #c3d6bb,
+  200: #9cbb8e,
+  300: #749f61,
+  400: #568b3f,
+  500: #38761d,
+  600: #326e1a,
+  700: #2b6315,
+  800: #245911,
+  900: #17460a,
+  A100: #94ff7d,
+  A200: #6aff4a,
+  A400: #40ff17,
+  A700: #2dfc00,
+);
+@include mat.core();
+
+$primary: mat.define-palette($ms-primary, 800, 300, 900);
+$accent: mat.define-palette($ms-secondary, A200, A100, A400);
+$warn: mat.define-palette(mat.$red-palette);
+$foreground: mat.define-palette($ms-secondary, A200, A100, A400);
+$background: mat.define-palette($ms-secondary, A200, A100, A400);
+//$success: mat.define-palette($ms-primary, 800, 300, 900);
+$success: #2dfc00;
+$red: #d2211c;

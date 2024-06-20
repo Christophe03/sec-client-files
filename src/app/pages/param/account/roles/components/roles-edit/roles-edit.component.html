@@ -1,0 +1,47 @@
+<div>
+  <form
+    [formGroup]="form"
+    class="mat-elevation-z2"
+    fxLayout="column"
+    fxFlex="100"
+  >
+    <mat-tab-group (selectedTabChange)="onTabChange($event)">
+      <mat-tab label="{{ 'description' | translate }}" class="flex-p">
+        <div fxFlex="100" fxLayout="row" class="flex-p">
+          <div fxFlex="48" fxLayout="column" class="no-error">
+            <mat-form-field appearance="outline">
+              <mat-label>{{ "nom" | translate }}</mat-label>
+              <input formControlName="nom" matInput />
+            </mat-form-field>
+          </div>
+          <div fxFlex="4" fxLayout="column" class="no-error"></div>
+          <div fxFlex="48" fxLayout="column" class="no-error"></div>
+        </div>
+      </mat-tab>
+      <mat-tab label="{{ 'permissions' | translate }}" class="flex-p">
+        <app-roles-access [role]="item"></app-roles-access>
+      </mat-tab>
+    </mat-tab-group>
+    <div fxFlex="100" fxLayout="row" class="mat-tab-action" class="flex-p">
+      <button
+        *ngIf="index === 0"
+        mat-raised-button
+        color="primary"
+        (click)="update()"
+        [disabled]="!form.valid"
+        style="margin-right: 10px"
+      >
+        {{ "btn.modifier" | translate }}
+      </button>
+      <button
+        *ngIf="index === 0"
+        mat-raised-button
+        color="warn"
+        (click)="cancel()"
+        style="margin-right: 10px"
+      >
+        {{ "btn.annuler" | translate }}
+      </button>
+    </div>
+  </form>
+</div>
